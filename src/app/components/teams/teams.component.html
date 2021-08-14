@@ -1,0 +1,118 @@
+<div style="padding-top: 1rem;">
+    <div class="row">
+        <h2 class="mat-title text-center">Displaying Users Saved Teams</h2>
+    </div>
+    <div class="row">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle *ngFor="let team of teams">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ team.teamName }}
+                    </mat-panel-title>
+                    <mat-panel-description class="right-aligned" style="padding-right: 10rem;">
+                        {{ team.teamType }}
+                    </mat-panel-description>
+                    <mat-panel-description class="right-aligned">
+                        {{ team.teamDescription }}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab label="{{team.teamMember1}}">
+                        <mat-list>
+                            <mat-list-item>Combat Power: {{team.t1CP}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t1Attack}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Defense: {{team.t1Defense}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Health: {{team.t1Health}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Speed: {{team.t1Speed}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Rate: {{team.t1CritRate}}%</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Damage: {{team.t1CritDmg}}%</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effectiveness: {{team.t1Eff}}%</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effect Resistance: {{team.t1ER}}%</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Dual Attack: {{team.t1DAC}}%</mat-list-item>
+                        </mat-list>
+
+                    </mat-tab>
+                    <mat-tab label="{{team.teamMember2}}">
+                        <mat-list>
+                            <mat-list-item>Combat Power: {{team.t2CP}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t2Attack}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Defense: {{team.t2Defense}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Health: {{team.t2Health}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Speed: {{team.t2Speed}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Rate: {{team.t2CritRate}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Damage: {{team.t2CritDmg}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effectiveness: {{team.t2Eff}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effect Resistance: {{team.t2ER}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t2DAC}}</mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="{{team.teamMember3}}">
+                        <mat-list>
+                            <mat-list-item>Combat Power: {{team.t3CP}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t3Attack}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Defense: {{team.t3Defense}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Health: {{team.t3Health}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Speed: {{team.t3Speed}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Rate: {{team.t3CritRate}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Damage: {{team.t3CritDmg}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effectiveness: {{team.t3Eff}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effect Resistance: {{team.t3ER}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t3DAC}}</mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                    <mat-tab label="{{team.teamMember4}}">
+                        <mat-list>
+                            <mat-list-item>Combat Power: {{team.t4CP}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t4Attack}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Defense: {{team.t4Defense}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Health: {{team.t4Health}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Speed: {{team.t4Speed}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Rate: {{team.t4CritRate}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Crit Damage: {{team.t4CritDmg}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effectiveness: {{team.t4Eff}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Effect Resistance: {{team.t4ER}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Attack: {{team.t4DAC}}</mat-list-item>
+                        </mat-list>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+</div>
