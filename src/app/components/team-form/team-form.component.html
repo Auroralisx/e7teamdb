@@ -1,11 +1,11 @@
 <div style="padding-top: 1rem;">
     <div class="row" style="padding-bottom: 1rem;">
         <mat-card>
-            <h3 display-6 class="text-center">Test</h3>
+            <h3 display-6 class="text-center">Creation Form MVP</h3>
             <mat-divider></mat-divider>
             <mat-card-content>
                 <h3 display-6 style="padding-top: 1rem;">
-                    Some Information Here
+                    See repo here: <a href="https://github.com/Auroralisx/e7teamdb">Link</a>
                 </h3>
             </mat-card-content>
         </mat-card>
@@ -58,21 +58,22 @@
                                             
                                         </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    
-                                    <mat-form-field appearance="standard" class="col-md-5">
-                                        <mat-label>Hero</mat-label>
-                                        <mat-select formControlName="name" #heroName>
-                                            <mat-option *ngFor="let hero of heroes" [value]="hero.value">
-                                                {{hero.viewValue}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-        
-                                    <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
-                                        <mat-label>Combat Power</mat-label>
-                                        <input formControlName="combat" matInput placeholder="Combat power here...">
-                                    </mat-form-field>
-        
+                                    <div class="row mx-auto">
+                                        <mat-form-field appearance="standard" class="col-md-5">
+                                            <mat-label>Hero</mat-label>
+                                            <mat-select formControlName="name" #heroName>
+                                                <mat-option *ngFor="let hero of heroes" [value]="hero.value">
+                                                    {{hero.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+            
+                                        <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
+                                            <mat-label>Combat Power</mat-label>
+                                            <input formControlName="combat" matInput placeholder="Combat power here...">
+                                        </mat-form-field>
+                                    </div>
+
                                     <div class="row mx-auto">
                                         <mat-form-field appearance="standard" class="col-md-4">
                                             <mat-label>Attack</mat-label>
@@ -200,7 +201,7 @@
                                                     <input formControlName="dac" matInput placeholder="Hero dual attack chance here...">
                                                 </mat-form-field>
                                             </div>
-                                            <button mat-raised-button color="accent">Remove Hero</button>
+                                            <button mat-raised-button color="accent" (click)="deleteAlternateHero(heroIndex)">Remove Hero</button>
                                         </mat-expansion-panel>
                                     </ng-container>
                                 </ng-container>
@@ -229,31 +230,32 @@
                                 <mat-card-content class="text-center">{{firstFormGroupData('teamType')}}</mat-card-content>
                             </mat-card>
                         </div>
-                        <mat-card>
-                            <mat-card-title class="text-center">Team Members</mat-card-title>
-                            <mat-card-content>
-                                <div class="row mx-auto">
-                                    <mat-card class="col-md-12">
-                                        <mat-card-subtitle class="text-center">{{secondFormGroupData('name')}}</mat-card-subtitle>
-                                        <mat-card-content class="text-center">Hero Stats Will Be Displayed Here</mat-card-content>
-                                        <img mat-card image [src]="heroPortrait(secondFormGroupData('name'))">
-                                    </mat-card>
 
-                                    <ng-container *ngFor="let i of secondFormGroupLength; let curr = index;">
-                                        <mat-card class="col-md-12">
-                                            <mat-card-subtitle class="text-center">{{alternateHeroData(curr, 'name')}}</mat-card-subtitle>
-                                            <mat-card-content class="text-center">Hero Stats Will Be Displayed Here</mat-card-content>
-                                            <img mat-card image [src]="heroPortrait(alternateHeroData(curr, 'name'))">
-                                        </mat-card>
-                                    </ng-container>
+                        <div class="row mx-auto">
+                            <mat-card class="col-md-6">
+                                <mat-card-subtitle class="text-center">{{secondFormGroupData('name')}}</mat-card-subtitle>
+                                <mat-card-content class="text-center">
+                                    <mat-list>
+                                        <mat-list-item>{{secondFormGroupData('combat')}}</mat-list-item>
+                                    </mat-list>
+                                </mat-card-content>
 
+                                <img mat-card image class="rounded mx-auto d-block" [src]="heroPortrait(secondFormGroupData('name'))">
+                            </mat-card>
 
-                                </div>
-                            </mat-card-content>
-                        </mat-card>
+                            <mat-card class="col-md-6" *ngFor="let i of secondFormGroupLength; let curr = index;">
+                                <mat-card-subtitle class="text-center">{{alternateHeroData(curr, 'name')}}</mat-card-subtitle>
+                                <mat-card-content class="text-center">
+                                    <mat-list>
+                                        <mat-list-item>{{alternateHeroData(curr, 'combat')}}</mat-list-item>
+                                    </mat-list>
+                                </mat-card-content>
 
+                                <img mat-card image class="rounded mx-auto d-block" [src]="heroPortrait(alternateHeroData(curr, 'name'))">
+                            </mat-card>
+                        </div>
 
-                        <div>
+                        <div  style="margin-top: 1rem;">
                             <button mat-button color="primary" matStepperPrevious>Back</button>
                             <button mat-button color="accent" (click)="stepper.reset()">Reset</button>
                         </div>
