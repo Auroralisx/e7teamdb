@@ -18,30 +18,29 @@
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup" autocomplete="off">
                             <ng-template matStepLabel>Basic Team Information</ng-template>
-        
-                            <mat-form-field appearance="standard" class="col-md-5">
-                                <mat-label>Team Name</mat-label>
-                                <input matInput formControlName="teamName" style="color: white" placeholder="Name here..." #teamName>
-                            </mat-form-field>
-
-                            <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
-                                <mat-label>Team Type</mat-label>
-                                <mat-select formControlName="teamType" #teamType>
-                                    <mat-option *ngFor="let type of types" [value]="type.value">
-                                        {{type.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-        
-                            <mat-form-field appearance="standard" class="col-md-12">
-                                <mat-label>Team Description</mat-label>
-                                <input formControlName="teamDesc" matInput  style="color: white" placeholder="Description here..." #teamDesc>
-                            </mat-form-field>
-        
+                            <div class="row mx-auto">
+                                <mat-form-field appearance="standard" class="col-md-5">
+                                    <mat-label>Team Name</mat-label>
+                                    <input matInput formControlName="teamName" style="color: white" placeholder="Name here..." #teamName>
+                                </mat-form-field>
+    
+                                <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
+                                    <mat-label>Team Type</mat-label>
+                                    <mat-select formControlName="teamType" #teamType>
+                                        <mat-option *ngFor="let type of types" [value]="type.value">
+                                            {{type.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+            
+                                <mat-form-field appearance="standard" class="col-md-12">
+                                    <mat-label>Team Description</mat-label>
+                                    <input formControlName="teamDesc" matInput  style="color: white" placeholder="Description here..." #teamDesc>
+                                </mat-form-field>
+                            </div>
                             <div>
                                 <button mat-button color="primary" matStepperNext>Next</button>
                             </div>
-        
                         </form>
                     </mat-step>
 
