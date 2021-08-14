@@ -1,0 +1,265 @@
+<div style="padding-top: 1rem;">
+    <div class="row" style="padding-bottom: 1rem;">
+        <mat-card>
+            <h3 display-6 class="text-center">Test</h3>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <h3 display-6 style="padding-top: 1rem;">
+                    Some Information Here
+                </h3>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="row">
+        <mat-card>
+            <mat-card-content>
+                <mat-stepper #stepper [linear]="true">
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup" autocomplete="off">
+                            <ng-template matStepLabel>Basic Team Information</ng-template>
+        
+                            <mat-form-field appearance="standard" class="col-md-5">
+                                <mat-label>Team Name</mat-label>
+                                <input matInput formControlName="teamName" style="color: white" placeholder="Name here..." #teamName>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
+                                <mat-label>Team Type</mat-label>
+                                <mat-select formControlName="teamType" #teamType>
+                                    <mat-option *ngFor="let type of types" [value]="type.value">
+                                        {{type.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+        
+                            <mat-form-field appearance="standard" class="col-md-12">
+                                <mat-label>Team Description</mat-label>
+                                <input formControlName="teamDesc" matInput  style="color: white" placeholder="Description here..." #teamDesc>
+                            </mat-form-field>
+        
+                            <div>
+                                <button mat-button color="primary" matStepperNext>Next</button>
+                            </div>
+        
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="secondFormGroup" label="Hero Information">
+
+                        <form [formGroup]="secondFormGroup" autocomplete="off">
+                            <mat-accordion>
+                                <mat-expansion-panel hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            {{heroName.value === '' ? ('Select Hero') : (heroName.value)}}
+                                        </mat-panel-title>
+                                        <mat-panel-description class="right-aligned">
+                                            
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    
+                                    <mat-form-field appearance="standard" class="col-md-5">
+                                        <mat-label>Hero</mat-label>
+                                        <mat-select formControlName="name" #heroName>
+                                            <mat-option *ngFor="let hero of heroes" [value]="hero.value">
+                                                {{hero.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+        
+                                    <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
+                                        <mat-label>Combat Power</mat-label>
+                                        <input formControlName="combat" matInput placeholder="Combat power here...">
+                                    </mat-form-field>
+        
+                                    <div class="row mx-auto">
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Attack</mat-label>
+                                            <input formControlName="attack" matInput placeholder="Hero attack here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Defense</mat-label>
+                                            <input formControlName="defense" matInput placeholder="Hero defense here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Health</mat-label>
+                                            <input formControlName="health" matInput placeholder="Hero health here...">
+                                        </mat-form-field>
+                                    </div>
+        
+                                    <div class="row mx-auto">
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Speed</mat-label>
+                                            <input formControlName="speed" matInput placeholder="Hero speed here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Critical Hit Chance</mat-label>
+                                            <input formControlName="critRate" matInput placeholder="Hero crit rate here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Critical Hit Damage</mat-label>
+                                            <input formControlName="critDmg" matInput placeholder="Hero crit damage here...">
+                                        </mat-form-field>
+                                    </div>
+                    
+                                    <div class="row mx-auto">
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Effectiveness</mat-label>
+                                            <input formControlName="eff" matInput placeholder="Hero effectiveness here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Effect Resistance</mat-label>
+                                            <input formControlName="res" matInput placeholder="Hero effect resistance here...">
+                                        </mat-form-field>
+                    
+                                        <mat-form-field appearance="standard" class="col-md-4">
+                                            <mat-label>Dual Attack Chance</mat-label>
+                                            <input formControlName="dac" matInput placeholder="Hero dual attack chance here...">
+                                        </mat-form-field>
+                                    </div>
+                                </mat-expansion-panel>
+                                <ng-container formArrayName="alternateHeroes">
+                                    <ng-container *ngFor="let hero of alternateHeroes.controls; let heroIndex = index">
+                                        <mat-expansion-panel [formGroupName]="heroIndex" hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    {{heroName.value === '' ? ('Select Hero') : (heroName.value)}}
+                                                </mat-panel-title>
+                                                <mat-panel-description class="right-aligned">
+                                                    
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            
+                                            <mat-form-field appearance="standard" class="col-md-5">
+                                                <mat-label>Hero</mat-label>
+                                                <mat-select formControlName="name" #heroName>
+                                                    <mat-option *ngFor="let hero of heroes" [value]="hero.value">
+                                                        {{hero.viewValue}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                
+                                            <mat-form-field appearance="standard" class="col-md-5 offset-md-2">
+                                                <mat-label>Combat Power</mat-label>
+                                                <input formControlName="combat" matInput placeholder="Combat power here...">
+                                            </mat-form-field>
+                
+                                            <div class="row mx-auto">
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Attack</mat-label>
+                                                    <input formControlName="attack" matInput placeholder="Hero attack here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Defense</mat-label>
+                                                    <input formControlName="defense" matInput placeholder="Hero defense here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Health</mat-label>
+                                                    <input formControlName="health" matInput placeholder="Hero health here...">
+                                                </mat-form-field>
+                                            </div>
+                
+                                            <div class="row mx-auto">
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Speed</mat-label>
+                                                    <input formControlName="speed" matInput placeholder="Hero speed here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Critical Hit Chance</mat-label>
+                                                    <input formControlName="critRate" matInput placeholder="Hero crit rate here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Critical Hit Damage</mat-label>
+                                                    <input formControlName="critDmg" matInput placeholder="Hero crit damage here...">
+                                                </mat-form-field>
+                                            </div>
+                            
+                                            <div class="row mx-auto">
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Effectiveness</mat-label>
+                                                    <input formControlName="eff" matInput placeholder="Hero effectiveness here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Effect Resistance</mat-label>
+                                                    <input formControlName="res" matInput placeholder="Hero effect resistance here...">
+                                                </mat-form-field>
+                            
+                                                <mat-form-field appearance="standard" class="col-md-4">
+                                                    <mat-label>Dual Attack Chance</mat-label>
+                                                    <input formControlName="dac" matInput placeholder="Hero dual attack chance here...">
+                                                </mat-form-field>
+                                            </div>
+                                            <button mat-raised-button color="accent">Remove Hero</button>
+                                        </mat-expansion-panel>
+                                    </ng-container>
+                                </ng-container>
+                            </mat-accordion>
+        
+                            <div style="padding-top: 1rem;">
+                                <button mat-button color="primary" matStepperPrevious>Back</button>
+                                <button mat-button color="primary" matStepperNext>Next</button>
+                                <button mat-button color="accent" [disabled]="checkLimit()" class="float-right" (click)="addAlternateHero()">Add Additional Hero</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Summary</ng-template>
+                        <div class="row mx-auto" style="padding-bottom: 2rem;">
+                            <mat-card class="col-md-3">
+                                <mat-card-title class="text-center">Team Name</mat-card-title>
+                                <mat-card-content class="text-center">{{firstFormGroupData('teamName')}}</mat-card-content>
+                            </mat-card>
+                            <mat-card class="col-md-4 offset-md-1">
+                                <mat-card-title class="text-center">Team Description</mat-card-title>
+                                <mat-card-content class="text-center">{{firstFormGroupData('teamDesc')}}</mat-card-content>
+                            </mat-card>
+                            <mat-card class="col-md-3 offset-md-1">
+                                <mat-card-title class="text-center">Team Type</mat-card-title>
+                                <mat-card-content class="text-center">{{firstFormGroupData('teamType')}}</mat-card-content>
+                            </mat-card>
+                        </div>
+                        <mat-card>
+                            <mat-card-title class="text-center">Team Members</mat-card-title>
+                            <mat-card-content>
+                                <div class="row mx-auto">
+                                    <mat-card class="col-md-12">
+                                        <mat-card-subtitle class="text-center">{{secondFormGroupData('name')}}</mat-card-subtitle>
+                                        <mat-card-content class="text-center">Hero Stats Will Be Displayed Here</mat-card-content>
+                                        <img mat-card image [src]="heroPortrait(secondFormGroupData('name'))">
+                                    </mat-card>
+
+                                    <ng-container *ngFor="let i of secondFormGroupLength; let curr = index;">
+                                        <mat-card class="col-md-12">
+                                            <mat-card-subtitle class="text-center">{{alternateHeroData(curr, 'name')}}</mat-card-subtitle>
+                                            <mat-card-content class="text-center">Hero Stats Will Be Displayed Here</mat-card-content>
+                                            <img mat-card image [src]="heroPortrait(alternateHeroData(curr, 'name'))">
+                                        </mat-card>
+                                    </ng-container>
+
+
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                        <div>
+                            <button mat-button color="primary" matStepperPrevious>Back</button>
+                            <button mat-button color="accent" (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-stepper>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
